@@ -1,8 +1,8 @@
 import express from 'express';
-import User from '../models/user'; 
-import bcryptjs from 'bcryptjs'; 
-import jwt from 'jsonwebtoken'; 
-import config from '../config'; 
+import User from '../models/user';
+import bcryptjs from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import config from '../config';
 
 let router = express.Router();
 
@@ -11,9 +11,9 @@ router.post('/', (req, res) => {
 
     User.query({
         where: { username: identifier },
-        orWhere: {email: identifier }
+        orWhere: { email: identifier }
     }).fetch().then(user => {
-        if (user) {
+        if(user) {
             if(bcryptjs.compareSync(password, user.get('password_digest'))) {
                 const token = jwt.sign({
                     id: user.get('id'),
@@ -29,4 +29,4 @@ router.post('/', (req, res) => {
     });
 });
 
-export default router
+export default router;

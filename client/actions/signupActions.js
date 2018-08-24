@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { bindActionCreators } from 'redux';
 
 export function userSignupRequest(userData) {
     return dispatch => {
-        return axios.post('/api/users', userData);
+        return axios.post('api/users', userData)
     }
 }
 

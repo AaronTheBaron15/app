@@ -4,10 +4,11 @@ import isEmpty from 'lodash/isEmpty';
 export default function validateInput(data) {
     let errors = {};
 
-    if (Validator.isNull(data.identifier)) {
+    if(Validator.isNull(data.identifier)) {
         errors.identifier = 'This field is required';
     }
-    if (Validator.isNull(data.password)) {
+
+    if(Validator.isNull(data.password)) {
         errors.password = 'This field is required';
     }
 
@@ -16,4 +17,3 @@ export default function validateInput(data) {
         isValid: isEmpty(errors)
     };
 }
-
